@@ -21,8 +21,7 @@ use crate::{
     },
     Protocol,
 };
-use halo2_base::halo2_proofs::halo2curves::ff::FromUniformBytes;
-use halo2_base::halo2_proofs::halo2curves::ff::PrimeField;
+use halo2_base::halo2_proofs::halo2curves::ff::{FromUniformBytes, PrimeField};
 use num_integer::Integer;
 use std::{io, iter, mem::size_of};
 

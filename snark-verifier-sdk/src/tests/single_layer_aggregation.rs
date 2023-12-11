@@ -18,7 +18,7 @@ use std::path::Path;
 fn test_shplonk_then_sphplonk_with_evm_verification() {
     std::env::set_var("VERIFY_CONFIG", "./configs/example_evm_accumulator.config");
     let k = 8;
-    let k_agg = 21;
+    let k_agg = 24;
 
     let mut rng = test_rng();
     let params_outer = gen_srs(k_agg);
@@ -46,7 +46,7 @@ fn test_shplonk_then_sphplonk_with_evm_verification() {
     let snarks_2 = gen_snark_shplonk(
         &params_inner,
         &pk_inner_2,
-        circuit_1.clone(),
+        circuit_2.clone(),
         &mut rng,
         Some(Path::new("data/inner_2.snark")),
     );
@@ -54,7 +54,7 @@ fn test_shplonk_then_sphplonk_with_evm_verification() {
 
     // Proof for circuit 2
     let circuit_3 = TestCircuit2::rand(&mut rng);
-    let pk_inner_3 = gen_pk(&params_inner, &circuit_1, Some(Path::new("data/inner_3.pkey")));
+    let pk_inner_3 = gen_pk(&params_inner, &circuit_3, Some(Path::new("data/inner_3.pkey")));
     let snarks_3 = gen_snark_shplonk(
         &params_inner,
         &pk_inner_3,

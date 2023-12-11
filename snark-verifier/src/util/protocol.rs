@@ -14,7 +14,7 @@ use std::{
     collections::{BTreeMap, BTreeSet},
     fmt::Debug,
     iter::{
-        Sum, {self},
+        Product, Sum, {self},
     },
     ops::{Add, Mul, Neg, Sub},
 };
@@ -343,6 +343,12 @@ impl<F: Clone> Neg for &Expression<F> {
 impl<F: Clone + Default> Sum for Expression<F> {
     fn sum<I: Iterator<Item = Self>>(iter: I) -> Self {
         iter.reduce(|acc, item| acc + item).unwrap_or_else(|| Expression::Constant(F::default()))
+    }
+}
+
+impl<F: Field> Product for Expression<F> {
+    fn product<I: Iterator<Item = Self>>(iter: I) -> Self {
+        iter.reduce(|acc, item| acc * item).unwrap_or_else(|| Expression::Constant(F::ONE))
     }
 }
 

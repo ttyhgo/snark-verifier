@@ -720,7 +720,7 @@ dependencies = [
 [[package]]
 name = "halo2_proofs"
 version = "0.2.0"
-source = "git+https://github.com/scroll-tech/halo2.git?branch=v1.1#84003a202d6b9185c952ec91ea793dbbd6c5b200"
+source = "git+https://github.com/scroll-tech/halo2.git?branch=v1.1#7a0566d1cae8078bccc4df4acf457ad92709ad7c"
 dependencies = [
  "ark-std",
  "blake2b_simd",
@@ -730,9 +730,11 @@ dependencies = [
  "group 0.13.0",
  "halo2curves 0.1.0",
  "log",
+ "maybe-rayon",
  "num-bigint",
  "num-integer",
  "poseidon 0.2.0 (git+https://github.com/scroll-tech/poseidon.git?branch=main)",
+ "rand_chacha",
  "rand_core",
  "rayon",
  "sha3 0.9.1",
@@ -996,6 +998,16 @@ name = "log"
 version = "0.4.20"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b5e6163cb8c49088c2c36f57875e58ccd8c87c7427f7fbd50ea6710b2f3f2e8f"
+
+[[package]]
+name = "maybe-rayon"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8ea1f30cedd69f0a2954655f7188c6a834246d2bcf1e315e2ac40c4b24dc9519"
+dependencies = [
+ "cfg-if 1.0.0",
+ "rayon",
+]
 
 [[package]]
 name = "memchr"

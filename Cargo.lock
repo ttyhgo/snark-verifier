@@ -670,7 +670,22 @@ checksum = "eabb4a44450da02c90444cf74558da904edde8fb4e9035a9a6a4e15445af0bd7"
 [[package]]
 name = "halo2-base"
 version = "0.2.2"
-source = "git+https://github.com/scroll-tech/halo2-lib?branch=develop#40ba7e3bbf013b55c59283534c9489701f9212d0"
+source = "git+https://github.com/scroll-tech/halo2-lib.git?branch=develop#40ba7e3bbf013b55c59283534c9489701f9212d0"
+dependencies = [
+ "ff 0.13.0",
+ "halo2_proofs 0.2.0 (git+https://github.com/scroll-tech/halo2.git?branch=v1.1)",
+ "itertools 0.10.5",
+ "num-bigint",
+ "num-integer",
+ "num-traits",
+ "rand_chacha",
+ "rustc-hash",
+]
+
+[[package]]
+name = "halo2-base"
+version = "0.2.2"
+source = "git+https://github.com/ttyhgo/halo2-lib.git?branch=feat/secp256r1#09a20b7b8798ef6dc0be7f26cda2d3acd2634628"
 dependencies = [
  "ff 0.13.0",
  "halo2_proofs 0.2.0 (git+https://github.com/axiom-crypto/halo2.git?tag=v2023_01_17)",
@@ -686,11 +701,11 @@ dependencies = [
 [[package]]
 name = "halo2-ecc"
 version = "0.2.2"
-source = "git+https://github.com/scroll-tech/halo2-lib?branch=develop#40ba7e3bbf013b55c59283534c9489701f9212d0"
+source = "git+https://github.com/ttyhgo/halo2-lib.git?branch=feat/secp256r1#09a20b7b8798ef6dc0be7f26cda2d3acd2634628"
 dependencies = [
  "ff 0.13.0",
  "group 0.13.0",
- "halo2-base",
+ "halo2-base 0.2.2 (git+https://github.com/ttyhgo/halo2-lib.git?branch=feat/secp256r1)",
  "itertools 0.10.5",
  "num-bigint",
  "num-integer",
@@ -1798,7 +1813,7 @@ dependencies = [
  "bytes",
  "crossterm",
  "ethereum-types",
- "halo2-base",
+ "halo2-base 0.2.2 (git+https://github.com/ttyhgo/halo2-lib.git?branch=feat/secp256r1)",
  "halo2-ecc",
  "hex",
  "itertools 0.12.0",
@@ -1811,6 +1826,7 @@ dependencies = [
  "rand",
  "rand_chacha",
  "rayon",
+ "regex",
  "revm",
  "rlp",
  "rustc-hash",
@@ -1831,7 +1847,7 @@ dependencies = [
  "crossterm",
  "ethereum-types",
  "ff 0.13.0",
- "halo2-base",
+ "halo2-base 0.2.2 (git+https://github.com/scroll-tech/halo2-lib.git?branch=develop)",
  "hex",
  "itertools 0.12.0",
  "log",

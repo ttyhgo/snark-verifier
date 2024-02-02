@@ -12,9 +12,12 @@ hex = "0.4"
 rand = "0.8"
 rustc-hash = "1.1.0"
 serde = { version = "1.0", features = ["derive"] }
+regex = "1.8.1"
 
 # Use halo2-base as non-optional dependency because it re-exports halo2_proofs, halo2curves, and poseidon, using different repos based on feature flag "halo2-axiom" or "halo2-pse"
-halo2-base = { git = "https://github.com/scroll-tech/halo2-lib", branch = "develop", default-features=false, features=["halo2-pse","display"] }
+# halo2-base = { git = "https://github.com/scroll-tech/halo2-lib", branch = "develop", default-features=false, features=["halo2-pse","display"] }
+halo2-base = { branch = "feat/secp256r1", default-features = false, features = ["halo2-pse", "display"], git = "https://github.com/ttyhgo/halo2-lib.git" }
+
 # This poseidon is identical to PSE (for now) but uses axiom's halo2curves; otherwise would require patching
 poseidon-axiom = { git = "https://github.com/axiom-crypto/halo2.git", branch = "axiom/dev", package = "poseidon", optional = true }
 poseidon = { git = "https://github.com/privacy-scaling-explorations/poseidon", optional = true }
@@ -30,7 +33,8 @@ bytes = { version = "1.2", optional = true }
 rlp = { version = "0.5", default-features = false, features = ["std"], optional = true }
 
 # loader_halo2
-halo2-ecc = { git = "https://github.com/scroll-tech/halo2-lib", branch = "develop", optional = true, default-features=false, features=["halo2-pse","display"] }
+#halo2-ecc = { git = "https://github.com/scroll-tech/halo2-lib", branch = "develop", optional = true, default-features=false, features=["halo2-pse","display"] }
+halo2-ecc = { branch = "feat/secp256r1", default-features = false, optional = true, features = ["halo2-pse", "display"], git = "https://github.com/ttyhgo/halo2-lib.git" }
 
 [dev-dependencies]
 ark-std = { version = "0.3.0", features = ["print-trace"] }
@@ -43,7 +47,7 @@ crossterm = { version = "0.25" }
 tui = { version = "0.19", default-features = false, features = ["crossterm"] }
 
 [features]
-default = ["loader_evm", "loader_halo2", "halo2-pse"]
+default = ["loader_evm", "loader_halo2", "halo2-pse", "display"]
 display = ["halo2-base/display", "halo2-ecc?/display"]
 loader_evm = ["dep:ethereum-types", "dep:sha3", "dep:revm", "dep:bytes", "dep:rlp"]
 loader_halo2 = ["halo2-ecc"]
